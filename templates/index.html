@@ -1,0 +1,27 @@
+<!doctype html>
+<title>Welcome to Ty-redis Flask</title>
+
+<div class = "div">
+    <table class = "table"  width="100%" cellspacing="0">
+        <thead >
+            <tr>
+                <th align="left">Uid</th>
+                <th align="left">content</th>
+                <th align="left">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <form id = "operator" method="POST" action="http://127.0.0.1:18889/index">
+                    <td> <input type='text' name = 'uid' value="123"></td>
+                    <td> {{data}}</td>
+                    <td>
+                        <button name = "type" value="get">get </button> 
+                        <button name = "type" value="add">add </button>
+                        <button name = "type" value="remove">remove </button>
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</div>
