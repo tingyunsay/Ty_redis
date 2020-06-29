@@ -21,7 +21,7 @@ def index():
                 res = ret.content.decode()
             else:
                 res = "operator get banned_key 【sc:hash:banned:user】 failed"
-                
+
         elif operate_type == "add":
             uid = request.form['uid']
             res = requests.post('http://127.0.0.1:18888/snapchat/snapchat' , data = { 'Type': 'add' , 'uid' : uid}) 
@@ -39,14 +39,22 @@ def index():
             else:
                 res = "operator remove uid 【%s】 failed"%(uid)
 
+        elif operate_type == "search":
+            uid = request.form['uid']
+            ret = requests.post('http://127.0.0.1:18888/snapchat/snapchat' , data = { 'Type': 'search' , 'uid' : uid})
+            if ret.status_code == 200:
+                res = ret.content.decode()
+            else:
+                res = "operator search uid 【%s】 failed"%(uid)
+
         else:
             res = "method not valid"
-    
+
     return render_template('index.html', data=res)
 
 
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(host='0.0.0.0', port=18889 ,debug=True)
+    app.run(host='127.0.0.1', port=18889 ,debug=True)
 
